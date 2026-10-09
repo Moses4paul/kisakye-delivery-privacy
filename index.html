@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy & Account Deletion · Kisakye Delivery</title>
-    <!-- Font Awesome (optional, for icons) -->
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -42,14 +43,14 @@
             width: 100%;
         }
 
-        /* header area */
+        /* BRAND HEADER */
         .brand-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             padding: 0 0.25rem;
         }
 
@@ -88,7 +89,61 @@
             border: 1px solid #f8bbd9;
         }
 
-        /* MAIN CARD STYLE */
+        /* ---------- TABS ---------- */
+        .tab-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: #fff0f5cc;
+            backdrop-filter: blur(8px);
+            padding: 0.5rem;
+            border-radius: 60px;
+            border: 1px solid #ffd9e6;
+            box-shadow: 0 8px 20px -8px rgba(233, 30, 99, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #8b5f73;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.25s ease;
+            letter-spacing: -0.01em;
+        }
+
+        .tab-btn i {
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: #ffe4ef;
+            color: var(--magenta-deep);
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--magenta-bright);
+            box-shadow: 0 6px 16px rgba(233, 30, 99, 0.25), 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #f8bbd9;
+        }
+
+        .tab-btn.active i {
+            transform: scale(1.05);
+            color: var(--magenta-bright);
+        }
+
+        /* CARD STYLE */
         .card {
             background: var(--soft-white);
             backdrop-filter: blur(2px);
@@ -100,6 +155,7 @@
                         inset 0 1px 0 #ffffff;
             border: 1px solid #ffd9e6;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
+            scroll-margin-top: 2rem;
         }
 
         .card:hover {
@@ -172,7 +228,7 @@
             font-weight: 600;
         }
 
-        /* highlight box (for deletion method) */
+        /* highlight box */
         .highlight-box {
             background: linear-gradient(135deg, #fff5f9, #ffeef4);
             border-radius: 28px;
@@ -216,7 +272,6 @@
             word-break: break-word;
         }
 
-        /* list styling */
         ul {
             list-style: none;
             margin: 1rem 0 1.5rem 0;
@@ -269,7 +324,6 @@
             border-radius: 4px;
         }
 
-        /* contact inline */
         .contact-line {
             display: flex;
             align-items: center;
@@ -316,12 +370,15 @@
             h2 { font-size: 1.5rem; }
             .highlight-box { padding: 1.2rem; }
             .method { padding: 1rem; }
+            .tab-btn { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
+            .tab-btn i { font-size: 0.95rem; }
+            .tab-bar { gap: 0.3rem; padding: 0.4rem; }
         }
     </style>
 </head>
 <body>
 <div class="wrapper">
-    <!-- BRAND HEADER (magenta style) -->
+    <!-- BRAND HEADER -->
     <div class="brand-header">
         <div class="brand-title">
             <i class="fas fa-motorcycle brand-icon"></i>
@@ -332,8 +389,18 @@
         </div>
     </div>
 
-    <!-- PRIVACY POLICY CARD (magenta enhanced) -->
-    <div class="card">
+    <!-- TABS (smooth scroll) -->
+    <div class="tab-bar" role="tablist">
+        <button class="tab-btn active" data-target="privacy-section" id="tab-privacy" role="tab" aria-selected="true">
+            <i class="fas fa-lock"></i> Privacy Policy
+        </button>
+        <button class="tab-btn" data-target="deletion-section" id="tab-deletion" role="tab" aria-selected="false">
+            <i class="fas fa-user-slash"></i> Delete Account
+        </button>
+    </div>
+
+    <!-- PRIVACY POLICY SECTION (id for scroll) -->
+    <div class="card" id="privacy-section">
         <span class="section-tag"><i class="fas fa-lock"></i> Privacy Policy</span>
         <h2>
             <i class="fas fa-user-shield"></i> 
@@ -367,8 +434,8 @@
         </div>
     </div>
 
-    <!-- ACCOUNT DELETION CARD (magenta style) -->
-    <div class="card">
+    <!-- ACCOUNT DELETION SECTION (id for scroll) -->
+    <div class="card" id="deletion-section">
         <span class="section-tag"><i class="fas fa-user-slash"></i> Account Deletion</span>
         <h2>
             <i class="fas fa-trash-can"></i> 
@@ -376,7 +443,6 @@
         </h2>
         <p>At Kisakye Delivery, we respect your privacy and provide full control over your personal data.</p>
 
-        <!-- highlight box with magenta accent -->
         <div class="highlight-box">
             <h3 style="margin-top: 0;"><i class="fas fa-circle-check"></i> How to request account deletion</h3>
             
@@ -421,11 +487,67 @@
     </div>
 </div>
 
-<!-- optional simple script for no reason but keeps console clean -->
+<!-- Tab logic: smooth scroll + active state -->
 <script>
     (function() {
-        // just a small console greeting (optional)
-        console.log('Kisakye Delivery — magenta UI loaded ✨');
+        const tabPrivacy = document.getElementById('tab-privacy');
+        const tabDeletion = document.getElementById('tab-deletion');
+        const privacySection = document.getElementById('privacy-section');
+        const deletionSection = document.getElementById('deletion-section');
+
+        // Helper to set active tab
+        function setActiveTab(activeTab) {
+            [tabPrivacy, tabDeletion].forEach(btn => {
+                if (btn === activeTab) {
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                }
+            });
+        }
+
+        // Scroll to section and update active
+        function scrollToSection(section, activeTab) {
+            setActiveTab(activeTab);
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Click handlers
+        tabPrivacy.addEventListener('click', () => {
+            scrollToSection(privacySection, tabPrivacy);
+        });
+
+        tabDeletion.addEventListener('click', () => {
+            scrollToSection(deletionSection, tabDeletion);
+        });
+
+        // Optional: update active tab on scroll (using Intersection Observer for better UX)
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px', // triggers around top area
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    if (id === 'privacy-section') {
+                        setActiveTab(tabPrivacy);
+                    } else if (id === 'deletion-section') {
+                        setActiveTab(tabDeletion);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(privacySection);
+        observer.observe(deletionSection);
+
+        // small console greeting
+        console.log('Kisakye Delivery — magenta UI with tabs ✨');
     })();
 </script>
 </body>
