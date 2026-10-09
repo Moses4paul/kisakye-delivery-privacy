@@ -3,46 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Kisakye Delivery</title>
+    <title>Privacy & Account Deletion · Kisakye Delivery</title>
+    <!-- Font Awesome (optional, for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            color: #333;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 { color: #1a1a1a; }
-        h2 { color: #2c3e50; margin-top: 20px; }
+
+        body {
+            background: linear-gradient(145deg, #fef7f9 0%, #fff0f5 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e1a1d;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* MAGENTA THEME VARIABLES */
+        :root {
+            --magenta-deep: #b3125a;
+            --magenta-rich: #d81b60;
+            --magenta-bright: #e91e63;
+            --magenta-soft: #f8bbd9;
+            --magenta-pale: #fce4ec;
+            --magenta-glow: rgba(233, 30, 99, 0.15);
+            --dark-plum: #2d1b2b;
+            --soft-white: #fffffffa;
+        }
+
+        .wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* header area */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 0 0.25rem;
+        }
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            font-size: 2.4rem;
+            color: var(--magenta-bright);
+            filter: drop-shadow(0 8px 12px rgba(233, 30, 99, 0.25));
+        }
+
+        .brand-title h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b3125a, #e91e63);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .brand-badge {
+            background: var(--magenta-pale);
+            border-radius: 100px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--magenta-deep);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid #f8bbd9;
+        }
+
+        /* MAIN CARD STYLE */
+        .card {
+            background: var(--soft-white);
+            backdrop-filter: blur(2px);
+            border-radius: 36px;
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 25px 40px -18px rgba(180, 20, 80, 0.25),
+                        0 8px 18px rgba(233, 30, 99, 0.08),
+                        inset 0 1px 0 #ffffff;
+            border: 1px solid #ffd9e6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 30px 50px -18px rgba(180, 20, 80, 0.35),
+                        0 10px 22px rgba(233, 30, 99, 0.12),
+                        inset 0 1px 0 #ffffff;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--magenta-bright);
+            background: #ffeef4;
+            padding: 0.2rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--magenta-bright);
+        }
+
+        h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--dark-plum);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        h2 i {
+            color: var(--magenta-bright);
+            font-size: 1.7rem;
+            background: var(--magenta-pale);
+            padding: 0.5rem;
+            border-radius: 18px;
+            box-shadow: 0 6px 12px var(--magenta-glow);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #3d1e30;
+            margin: 1.5rem 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 i {
+            color: var(--magenta-rich);
+            font-size: 1.1rem;
+            background: #ffe7f0;
+            padding: 0.3rem;
+            border-radius: 10px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #2f2229;
+            font-size: 1.02rem;
+        }
+
+        strong {
+            color: #b3125a;
+            font-weight: 600;
+        }
+
+        /* highlight box (for deletion method) */
+        .highlight-box {
+            background: linear-gradient(135deg, #fff5f9, #ffeef4);
+            border-radius: 28px;
+            padding: 1.8rem 1.8rem;
+            margin: 1.8rem 0;
+            border: 1px solid #f8bbd9;
+            box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.8), 0 8px 18px rgba(220, 20, 90, 0.08);
+        }
+
+        .method {
+            background: #ffffff;
+            padding: 1.2rem 1.4rem;
+            border-radius: 22px;
+            margin-bottom: 1rem;
+            border-left: 6px solid var(--magenta-bright);
+            box-shadow: 0 6px 14px rgba(233, 30, 99, 0.06);
+            transition: all 0.15s ease;
+        }
+
+        .method:hover {
+            border-left-width: 10px;
+            background: #fffafc;
+        }
+
+        .method strong {
+            font-size: 1.1rem;
+            color: #b3125a;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .method code {
+            background: #fce4ec;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #a0104c;
+            font-weight: 500;
+            border: 1px solid #f8bbd9;
+            display: inline-block;
+            word-break: break-word;
+        }
+
+        /* list styling */
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 2.2rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        ul li i {
+            color: var(--magenta-bright);
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            background: #ffeef4;
+            padding: 0.2rem;
+            border-radius: 8px;
+        }
+
+        .badge-note {
+            background: #fce4ec;
+            border-radius: 100px;
+            padding: 0.6rem 1.4rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: #a0104c;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 0.5rem 0;
+            border: 1px solid #f8bbd9;
+        }
+
+        .badge-note i {
+            font-size: 1rem;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, #f8bbd9, #ffd9e6, #f8bbd9);
+            margin: 1.8rem 0;
+            border: none;
+            border-radius: 4px;
+        }
+
+        /* contact inline */
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            background: #fff7fa;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid #f8bbd9;
+            margin-top: 1rem;
+        }
+
+        .contact-line i {
+            color: var(--magenta-bright);
+            font-size: 1.3rem;
+        }
+
+        .contact-line a {
+            color: #b3125a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: border 0.15s;
+        }
+
+        .contact-line a:hover {
+            border-bottom: 2px solid var(--magenta-bright);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #8b6b7a;
+            margin-top: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.75rem; }
+            .card { padding: 1.5rem 1.2rem; border-radius: 28px; }
+            h1 { font-size: 1.5rem; }
+            .brand-title h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.5rem; }
+            .highlight-box { padding: 1.2rem; }
+            .method { padding: 1rem; }
+        }
     </style>
 </head>
 <body>
+<div class="wrapper">
+    <!-- BRAND HEADER (magenta style) -->
+    <div class="brand-header">
+        <div class="brand-title">
+            <i class="fas fa-motorcycle brand-icon"></i>
+            <h1>Kisakye Delivery</h1>
+        </div>
+        <div class="brand-badge">
+            <i class="fas fa-shield-alt"></i> Privacy & Data Control
+        </div>
+    </div>
 
-    <h1>Privacy Policy for Kisakye Delivery</h1>
-    <p><strong>Last updated:</strong> October 9, 2026</p>
+    <!-- PRIVACY POLICY CARD (magenta enhanced) -->
+    <div class="card">
+        <span class="section-tag"><i class="fas fa-lock"></i> Privacy Policy</span>
+        <h2>
+            <i class="fas fa-user-shield"></i> 
+            Your privacy, our promise
+        </h2>
+        <p><strong>Last updated:</strong> October 9, 2026</p>
 
-    <h2>1. Overview</h2>
-    <p>Kisakye Delivery operates the Kisakye Delivery mobile application. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our app.</p>
+        <h3><i class="fas fa-circle-info"></i> 1. Overview</h3>
+        <p>Kisakye Delivery operates the Kisakye Delivery mobile application. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our app.</p>
 
-    <h2>2. Information Collection and Use</h2>
-    <p>We do not collect, store, or share any personal or sensitive user data.</p>
+        <h3><i class="fas fa-database"></i> 2. Information Collection and Use</h3>
+        <p><span style="background: #ffeef4; padding: 0.2rem 0.8rem; border-radius: 40px; font-weight: 600; color: #b3125a;">🔒 We do not collect, store, or share any personal or sensitive user data.</span></p>
 
-    <h2>3. Log Data and Device Information</h2>
-    <p>Standard technical data (such as device model, OS version, and crash diagnostics) may be processed automatically by standard platform services to help maintain stability and performance.</p>
+        <h3><i class="fas fa-microchip"></i> 3. Log Data and Device Information</h3>
+        <p>Standard technical data (such as device model, OS version, and crash diagnostics) may be processed automatically by standard platform services to help maintain stability and performance.</p>
 
-    <h2>4. Data Sharing</h2>
-    <p>We do not sell, trade, or share user data with outside parties.</p>
+        <h3><i class="fas fa-share-nodes"></i> 4. Data Sharing</h3>
+        <p>We do not sell, trade, or share user data with outside parties.</p>
 
-    <h2>5. Security</h2>
-    <p>We value your trust in providing us your information and strive to use commercially acceptable means of protecting it.</p>
+        <h3><i class="fas fa-shield-halved"></i> 5. Security</h3>
+        <p>We value your trust in providing us your information and strive to use commercially acceptable means of protecting it.</p>
 
-    <h2>6. Children's Privacy</h2>
-    <p>Our application does not address anyone under the age of 13, nor do we knowingly collect personally identifiable information from children.</p>
+        <h3><i class="fas fa-child"></i> 6. Children's Privacy</h3>
+        <p>Our application does not address anyone under the age of 13, nor do we knowingly collect personally identifiable information from children.</p>
 
-    <h2>7. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at:<br>
-    <strong>Email:</strong> mwesicloudsolutions@gmail.com</p>
+        <h3><i class="fas fa-envelope"></i> 7. Contact Us</h3>
+        <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+        <div class="contact-line">
+            <i class="fas fa-paper-plane"></i>
+            <span>Email: <a href="mailto:mwesicloudsolutions@gmail.com">mwesicloudsolutions@gmail.com</a></span>
+        </div>
+    </div>
 
+    <!-- ACCOUNT DELETION CARD (magenta style) -->
+    <div class="card">
+        <span class="section-tag"><i class="fas fa-user-slash"></i> Account Deletion</span>
+        <h2>
+            <i class="fas fa-trash-can"></i> 
+            Delete your account
+        </h2>
+        <p>At Kisakye Delivery, we respect your privacy and provide full control over your personal data.</p>
+
+        <!-- highlight box with magenta accent -->
+        <div class="highlight-box">
+            <h3 style="margin-top: 0;"><i class="fas fa-circle-check"></i> How to request account deletion</h3>
+            
+            <div class="method">
+                <strong><i class="fas fa-mobile-screen-button"></i> Method 1: In the App</strong>
+                <p style="margin-bottom: 0;">Open Kisakye Delivery → Go to <strong>Profile / Settings</strong> → Tap <strong>Delete Account</strong>.</p>
+            </div>
+
+            <div class="method" style="margin-bottom: 0;">
+                <strong><i class="fas fa-envelope-open-text"></i> Method 2: Via Email</strong>
+                <p style="margin-bottom: 0.5rem;">Send an email to <strong>mwesicloudsolutions@gmail.com</strong> with the subject line:</p>
+                <code>Account Deletion Request - [Your Phone Number or Email]</code>
+            </div>
+        </div>
+
+        <h3><i class="fas fa-eraser"></i> What data will be deleted?</h3>
+        <ul>
+            <li><i class="fas fa-check-circle"></i> Your profile details (Name, Phone Number, Email Address).</li>
+            <li><i class="fas fa-check-circle"></i> Saved delivery addresses and order history.</li>
+            <li><i class="fas fa-check-circle"></i> Authentication and account credentials.</li>
+        </ul>
+
+        <h3><i class="fas fa-clock-rotate-left"></i> What data is kept?</h3>
+        <p>Financial and transaction records may be retained for up to <strong>90 days</strong> where required for legal, accounting, and anti-fraud compliance.</p>
+
+        <h3><i class="fas fa-hourglass-half"></i> Processing time</h3>
+        <div class="badge-note">
+            <i class="fas fa-calendar-check"></i> 
+            Account deletion requests submitted via email will be processed within <strong>7 business days</strong>.
+        </div>
+
+        <hr class="divider">
+
+        <p style="font-size: 0.95rem; color: #6b4b5a; margin-top: 1.5rem; display: flex; gap: 0.8rem; align-items: center;">
+            <i class="fas fa-circle-info" style="color: var(--magenta-bright);"></i>
+            For any deletion-related questions, reach out to <a href="mailto:mwesicloudsolutions@gmail.com" style="color: #b3125a; font-weight: 600;">mwesicloudsolutions@gmail.com</a>
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-heart" style="color: #e91e63;"></i> Kisakye Delivery — secure, transparent, and rider-friendly.
+    </div>
+</div>
+
+<!-- optional simple script for no reason but keeps console clean -->
+<script>
+    (function() {
+        // just a small console greeting (optional)
+        console.log('Kisakye Delivery — magenta UI loaded ✨');
+    })();
+</script>
 </body>
 </html>
